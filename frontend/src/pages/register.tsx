@@ -6,7 +6,7 @@ import { IUser } from '../interfaces/IUser';
 import { RootState } from '../redux/store';
 import Link from "next/link";
 
-const Login = () => {
+const SignUp = () => {
   // let navigate = useNavigate();
   // const dispatch = useDispatch();
 
@@ -31,8 +31,7 @@ const Login = () => {
   return (
     <div className="container mx-auto mt-5">
       <div>
-        <h1 className='header'>Hi there,</h1>
-        <h2 className='header2'>Welcome to our <br></br> contacts portal</h2>
+        <h1 className='header'>Register Now!</h1>
         <form >
           <div className="mb-4">
             <input
@@ -51,7 +50,18 @@ const Login = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="password"
+              placeholder="create password"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="confirm password"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
@@ -62,15 +72,13 @@ const Login = () => {
               type="submit"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
-                Login
+                Register
               </button>
             </div>
           
-            <div>
-                <Link href="/register" className="linkBtn"> 
-                  Click here to register
-                </Link>
-            </div>
+            <Link href="/login" className="linkBtn"> 
+              Back to login
+            </Link>
           </div>
         </form>
       </div>
@@ -83,4 +91,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

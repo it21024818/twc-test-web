@@ -1,8 +1,7 @@
 import { createStore, compose, applyMiddleware, combineReducers } from "redux";
 import thunk from "redux-thunk";
 import { usersFetchReducer, userDetailsReducer, userUpdateReducer, userDeleteReducer, userLoginReducer, userRegisterReducer, profileUpdateReducer, passwordUpdateReducer } from './reducers/authReducer';
-// import {roomsFetchReducer, roomDetailsReducer, roomCreateReviewReducer, roomCreateReducer, roomUpdateReducer, roomDeleteReducer } from './reducers/RoomReducers';
-// import { bookingsFetchReducer, bookingDeleteReducer, roomBookingCheckReducer, bookingCreateReducer, bookedDatesReducer, BookingsMyReducer } from './reducers/BookingReducers';
+import {contactsFetchReducer, contactCreateReducer, contactUpdateReducer, contactDeleteReducer } from './reducers/contactReducer';
 
 const composeEnhancer = (window && (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
@@ -15,18 +14,10 @@ const rootReducers = combineReducers({
   userDetails: userDetailsReducer,
   userUpdate: userUpdateReducer,
   userDelete: userDeleteReducer,
-  // roomsFetch: roomsFetchReducer,
-  // roomDetails: roomDetailsReducer,
-  // roomCreateReview: roomCreateReviewReducer,
-  // roomCreate: roomCreateReducer,
-  // roomUpdate: roomUpdateReducer,
-  // roomDelete: roomDeleteReducer,
-  // roomBookingCheck: roomBookingCheckReducer,
-  // bookingsFetch: bookingsFetchReducer,
-  // bookingDelete: bookingDeleteReducer,
-  // bookedDates: bookedDatesReducer,
-  // bookingCreate: bookingCreateReducer,
-  // BookingsMy: BookingsMyReducer
+  contactFetch: contactsFetchReducer,
+  contactCreate: contactCreateReducer,
+  contactUpdate: contactUpdateReducer,
+  contactDelete: contactDeleteReducer,
 });
 
 const userInfoFromStorage = JSON.parse(localStorage.getItem("userInfo")!);
@@ -44,6 +35,6 @@ const store = createStore(
 );
 
 
-// export type RootState = ReturnType<typeof rootReducers>;
+export type RootState = ReturnType<typeof rootReducers>;
 
 export default store;
