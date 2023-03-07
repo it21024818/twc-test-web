@@ -1,44 +1,47 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { login } from '../redux/actions/authActions';
-import { IUser } from '../interfaces/IUser';
-import { RootState } from '../redux/store';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
+import { registerAsync } from "../redux/slices/authSlice";
+
+type FormData = {
+  email: string;
+  password: string;
+};
 
 const SignUp = () => {
-  // let navigate = useNavigate();
-  // const dispatch = useDispatch();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");  
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
-  // const { userInfo, loading, error, success } = useSelector((state: RootState) => state.userLogin);
-
-
-  // const handleSubmit = (e: React.FormEvent) => {
-  //     e.preventDefault();
-  //     dispatch(login({ email, password }));
-  // }
-
-    // useEffect(() => {
-    //     if(success || userInfo) {
-    //         navigate("/");
-    //     }
-    // }, [userInfo, success, dispatch]);
-
+  const onSubmit = async (data: FormData) => {
+    setIsLoading(true);
+    try {
+      const response = await registerAsync(data);
+      // await dispatch(registerAsync(data));
+      // dispatch(setToken(response.token));
+      router.push("/");
+    } catch (error) {
+      // setError(error.response.data.message);
+    }
+    setIsLoading(false);
+  };
 
   return (
     <div className="container mx-auto mt-5">
       <div>
         <h1 className='header'>Register Now!</h1>
-        <form >
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <input
               type="email"
               id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
               placeholder="e-mail"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
@@ -48,8 +51,6 @@ const SignUp = () => {
             <input
               type="password"
               id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               placeholder="create password"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
@@ -59,8 +60,6 @@ const SignUp = () => {
             <input
               type="password"
               id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
               placeholder="confirm password"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required

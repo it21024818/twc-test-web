@@ -1,28 +1,27 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../redux/store';
-import { fetchContacts, deleteContact } from '../redux/actions/contactsActions';
+
 
 const Contacts = () => {
-  const [selectedContact, setSelectedContact] = useState(null);
-  const dispatch = useDispatch();
-  const contacts = useSelector((state: RootState) => state.contacts.contacts);
+  // const [selectedContact, setSelectedContact] = useState(null);
+  // const dispatch = useDispatch();
+  // const contacts = useSelector((state: RootState) => state.contacts.contacts);
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, []);
 
-  const handleEdit = (contact) => {
-    setSelectedContact(contact);
-  };
+  // const handleEdit = (contact) => {
+  //   setSelectedContact(contact);
+  // };
 
-  const handleDelete = (id) => {
-    dispatch(deleteContact(id));
-  };
+  // const handleDelete = (id) => {
+  //   dispatch(deleteContact(id));
+  // };
 
   return (
     <div>
-      <h1>Contacts</h1>
+      {/* <h1>Contacts</h1>
       <table>
         <thead>
           <tr>
@@ -67,7 +66,7 @@ const Contacts = () => {
             <button type="submit">Save</button>
           </form>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

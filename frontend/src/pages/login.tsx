@@ -1,31 +1,29 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { login } from '../redux/actions/authActions';
-import { IUser } from '../interfaces/IUser';
-import { RootState } from '../redux/store';
+import { useRouter } from "next/router";
+import { loginAsync } from "../redux/slices/authSlice";
+
+
 import Link from "next/link";
 
 const Login = () => {
-  // let navigate = useNavigate();
-  // const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");  
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const dispatch = useDispatch();
+  const router = useRouter();
 
-  // const { userInfo, loading, error, success } = useSelector((state: RootState) => state.userLogin);
-
-
-  // const handleSubmit = (e: React.FormEvent) => {
-  //     e.preventDefault();
-  //     dispatch(login({ email, password }));
-  // }
-
-    // useEffect(() => {
-    //     if(success || userInfo) {
-    //         navigate("/");
-    //     }
-    // }, [userInfo, success, dispatch]);
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      // await dispatch(loginAsync({ email, password }));
+      router.push("/");
+    } catch (error) {
+      // setErrorMessage(error.message);
+    }
+  };
 
 
   return (
@@ -33,7 +31,7 @@ const Login = () => {
       <div>
         <h1 className='header'>Hi there,</h1>
         <h2 className='header2'>Welcome to our <br></br> contacts portal</h2>
-        <form >
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <input
               type="email"
