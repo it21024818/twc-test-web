@@ -22,6 +22,7 @@ const Login = () => {
       router.push("/");
     } catch (error) {
       // setErrorMessage(error.message);
+      console.error("Failed to login");
     }
   };
 
@@ -29,7 +30,7 @@ const Login = () => {
   return (
     <div className="container mx-auto mt-5">
       <div>
-        <h1 className='header'>Hi there,</h1>
+        <h1 className='header' style={{ paddingTop: '100px'}}>Hi there,</h1>
         <h2 className='header2'>Welcome to our <br></br> contacts portal</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -38,7 +39,7 @@ const Login = () => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="e-mail"
+              placeholder="     e-mail"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
@@ -49,7 +50,7 @@ const Login = () => {
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="password"
+              placeholder="     password"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
@@ -57,6 +58,7 @@ const Login = () => {
           <div>
             <div>
               <button
+              style={{top:'70%'}}
               type="submit"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
@@ -65,7 +67,7 @@ const Login = () => {
             </div>
           
             <div>
-                <Link href="/register" className="linkBtn"> 
+                <Link href="/register" className="linkBtn" style={{top:'70%'}}> 
                   Click here to register
                 </Link>
             </div>

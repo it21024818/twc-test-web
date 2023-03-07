@@ -29,6 +29,7 @@ const SignUp = () => {
       router.push("/");
     } catch (error) {
       // setError(error.response.data.message);
+      console.error("Failed to register");
     }
     setIsLoading(false);
   };
@@ -36,13 +37,14 @@ const SignUp = () => {
   return (
     <div className="container mx-auto mt-5">
       <div>
-        <h1 className='header'>Register Now!</h1>
+        <h1 className='header' style={{ paddingTop: '100px'}}>Register Now!</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <input
               type="email"
               id="email"
-              placeholder="e-mail"
+              placeholder="     e-mail"
+              // value={email}
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
@@ -51,7 +53,7 @@ const SignUp = () => {
             <input
               type="password"
               id="password"
-              placeholder="create password"
+              placeholder="     create password"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
@@ -60,7 +62,7 @@ const SignUp = () => {
             <input
               type="password"
               id="password"
-              placeholder="confirm password"
+              placeholder="     confirm password"
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
@@ -68,6 +70,7 @@ const SignUp = () => {
           <div>
             <div>
               <button
+              style={{top:'70%'}}
               type="submit"
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
@@ -75,14 +78,14 @@ const SignUp = () => {
               </button>
             </div>
           
-            <Link href="/login" className="linkBtn"> 
+            <Link href="/login" className="linkBtn" style={{top:'70%'}}> 
               Back to login
             </Link>
           </div>
         </form>
       </div>
-      <div className='rightBg'>
-        <img src="images/twc.png" width="200px"/>
+      <div className='rightBg' >
+        <img src="images/twc.png" width="200px" />
         <h1>contacts</h1>
         <h2>portal</h2>
       </div>

@@ -2,60 +2,73 @@ import ContactPortal from '@/components/ContactPortal';
 import LogoutBtn from '@/components/LogoutBtn';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact } from "../redux/slices/contactsSlice";
-import { createContact } from "./api/index";
-import { Contact } from '../redux/types';
+import { addContacts } from "../redux/slices/contactsSlice";
+import { useRouter } from "next/router";
 
 const NewContact = () => {
 
+    const router = useRouter();
     const dispatch = useDispatch();
-    const [fullName, setFullName] = useState("");
-    const [emailAddress, setEmailAddress] = useState("");
-    const [number, setNumber] = useState("");
-    const [gender, setGender] = useState("");
+    const [formData, setFormData] = useState({
+      id: "",
+      fullName: "",
+      number: "",
+      emailAddress: "",
+      gender: "",
+    });
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
+      setFormData((prevState) => ({ ...prevState, [name]: value }));
+    };
   
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      dispatch(addContact({
-          fullName, emailAddress, number, gender,
-          id: ''
-      }));
+      try {
+        await dispatch(addContacts(formData));
+        router.push("/contacts/");
+      } catch(error) {
+        console.error("Failed to add new contact: ");
+      }
+  
 
     };
+
 
 
   return (
     <div className="flex justify-center mt-10">
         <ContactPortal />
-      <form onSubmit={handleSubmit}>
+        <h1 style={{fontSize: '50px', left:'500px'}}>New Contact</h1>
+      <form onSubmit={handleSubmit} >
         <div className="mb-4">
           <input
             type="text"
             id="fullName"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            value={formData.fullName}
+            onChange={handleInputChange}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="full name"
+            placeholder="     full name"
           />
         </div>
         <div className="mb-4">
           <input
             type="text"
             id="number"
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
+            value={formData.number}
+            onChange={handleInputChange}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="phone number"
+            placeholder="     phone number"
           />
         </div>
         <div className="mb-4">
           <input
             type="text"
             id="emailAddress"
-            value={emailAddress}
-            onChange={(e) => setEmailAddress(e.target.value)}
+            value={formData.emailAddress}
+            onChange={handleInputChange}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="e-mail"
+            placeholder="     e-mail"
           />
         </div>
         <div className="mb-4">
@@ -65,10 +78,10 @@ const NewContact = () => {
           <input
             type="text"
             id="gender"
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
+            value={formData.gender}
+            onChange={handleInputChange}
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Enter Gender"
+            placeholder="     Enter Gender"
           />
         </div>
         <div className="flex justify-center">

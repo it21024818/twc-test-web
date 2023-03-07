@@ -37,7 +37,7 @@ input {
   right: 0px;
   background: url(bg.png);
   padding-left: 10%;
-  padding-top: 20%;
+  padding-top: 15%;
   font-size: 80px;
   color: #083F46;
   font-weight: bold;
@@ -53,10 +53,10 @@ button {
   gap: 10px;
 
   position: absolute;
-  width: 131px;
+  width: 150px;
   height: 48px;
   left: 90px;
-  top: 600px;
+  /* top: 600px; */
 
   border: 1px solid #FFFFFF;
   border-radius: 50px;
@@ -89,7 +89,7 @@ form {
 .header {
   font-size: 50px;
   font-weight: 800;
-  margin-top: 150px;
+  /* margin-top: 150px; */
   margin-left: 100px;
 }
 
@@ -98,3 +98,7 @@ form {
   margin-left: 100px;
   font-weight: 500;
 }
+
+input::placeholder{
+  color: #083F46;
+  }

@@ -9,9 +9,11 @@ export default function Home() {
   return (
     <>
       <ContactPortal />
-      <h1 className='header'>Welcome,</h1>
-      <h2 className='header2'>This is where your contacts will live. Click the button below <br></br> to add a new contact.</h2>
-      <Link href="/contacts">add your first contact</Link>
+      <div style={{paddingLeft: '100px', paddingTop: '5%'}}>
+        <h1 className='header'>Welcome,</h1>
+        <h2 className='header2'>This is where your contacts will live. Click the button below <br></br> to add a new contact.</h2>
+        <Link href="/new"><button style={{ left: '200px', top: '65%'}}>add new contact</button></Link>
+      </div>
       <LogoutBtn />
     </>
   )
