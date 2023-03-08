@@ -37,17 +37,18 @@ const NewContact = () => {
 
 
   return (
-    <div className="flex justify-center mt-10">
+    <div>
         <ContactPortal />
-        <h1 style={{fontSize: '50px', left:'500px'}}>New Contact</h1>
-      <form onSubmit={handleSubmit} >
+        <h1 style={{fontSize: '50px', paddingLeft:'200px', paddingTop:'20px', fontWeight:'bold'}}>New Contact</h1>
+      <form onSubmit={handleSubmit}>
+      <div style={{width: '40%', float:'left', marginLeft:'100px'}}>
         <div className="mb-4">
           <input
             type="text"
             id="fullName"
             value={formData.fullName}
             onChange={handleInputChange}
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="     full name"
           />
         </div>
@@ -57,37 +58,47 @@ const NewContact = () => {
             id="number"
             value={formData.number}
             onChange={handleInputChange}
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="     phone number"
           />
         </div>
+      </div>
+
+      <div style={{width: '50%', float:'right'}}>
         <div className="mb-4">
           <input
             type="text"
             id="emailAddress"
             value={formData.emailAddress}
             onChange={handleInputChange}
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             placeholder="     e-mail"
           />
         </div>
-        <div className="mb-4">
-          <label htmlFor="gender" className="block text-gray-700 font-bold mb-2">
-            Gender
+        
+        <div style={{width: '10%', float:'left', marginTop:'40px', marginLeft:'50px'}}>
+          <label htmlFor="gender" className="block font-bold mb-2">
+            gender
           </label>
-          <input
-            type="text"
-            id="gender"
-            value={formData.gender}
-            onChange={handleInputChange}
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="     Enter Gender"
-          />
         </div>
-        <div className="flex justify-center">
+
+        <div className="flex items-center mb-4" style={{width: '10%', float:'left'}}>
+          <input id="default-radio-1" type="radio" style={{width: '1%'}} value={formData.gender} name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+          <label htmlFor="default-radio-1" style={{marginLeft:'30px'}} className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">male</label>
+        </div>
+
+        <div className="flex items-center" style={{width: '55%', float:'right', marginTop:'40px'}}>
+          <input id="default-radio-2" type="radio" style={{width: '1%'}} value={formData.gender} name="default-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+          <label htmlFor="default-radio-2" style={{marginLeft:'30px'}} className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">female</label>
+        </div>
+
+      </div>
+
+        <div className="flex justify-center" style={{marginTop: '210px'}}>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            style={{marginLeft:'100px'}}
+            className="text-white font-bold"
           >
             Add Contact
           </button>

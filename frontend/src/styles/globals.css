@@ -24,7 +24,7 @@ input {
   padding-left: 50px;
   background: #FFFFFF;
   border-radius: 50px;
-  color: #083F46;
+  color: #000000;
 }
 
 
@@ -67,7 +67,7 @@ button {
 }
 
 form {
-  padding-top: 30px;
+  padding-top: 1px;
   padding-left: 50px;
 }
 
@@ -101,4 +101,5 @@ form {
 
 input::placeholder{
   color: #083F46;
+  font-weight: 800;
   }

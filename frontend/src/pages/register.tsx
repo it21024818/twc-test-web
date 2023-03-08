@@ -45,7 +45,7 @@ const SignUp = () => {
               id="email"
               placeholder="     e-mail"
               // value={email}
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
           </div>
@@ -54,7 +54,7 @@ const SignUp = () => {
               type="password"
               id="password"
               placeholder="     create password"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
           </div>
@@ -63,7 +63,7 @@ const SignUp = () => {
               type="password"
               id="password"
               placeholder="     confirm password"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />
           </div>
@@ -72,7 +72,7 @@ const SignUp = () => {
               <button
               style={{top:'70%'}}
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="text-white font-bold"
               >
                 Register
               </button>
