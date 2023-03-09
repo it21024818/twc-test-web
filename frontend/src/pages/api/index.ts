@@ -1,7 +1,7 @@
 import { Contact } from "@/redux/types";
 import axios, { AxiosResponse } from "axios";
 
-const API_BASE_URL = "http://localhost:5000/api";
+const API_BASE_URL = "http://localhost:5000";
 
 // Authentication API calls
 export const login = async (email: string, password: string) => {
@@ -22,7 +22,7 @@ export const register = async (
   email: string,
   password: string
 ) => {
-  const response = await axios.post(`${API_BASE_URL}/users`, {
+  const response = await axios.post(`${API_BASE_URL}/auth/register`, {
     email,
     password,
   });

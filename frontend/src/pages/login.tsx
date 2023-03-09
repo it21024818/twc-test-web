@@ -15,10 +15,17 @@ const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
+  // useEffect(() => {
+  //   const isLoggedIn = false; 
+  //   if (!isLoggedIn) {
+  //     router.replace('/login');
+  //   }
+  // }, []);
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
-      // dispatch(loginAsync({ email, password }));
+      dispatch<any>(loginAsync({ email, password }));
       router.push("/");
     } catch (error) {
       // setErrorMessage(error.message);

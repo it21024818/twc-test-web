@@ -24,8 +24,8 @@ const SignUp = () => {
     setIsLoading(true);
     try {
       const response = await registerAsync(data);
-      // await dispatch(registerAsync(data));
-      // dispatch(setToken(response.token));
+      await dispatch<any>(registerAsync(data));
+      // dispatch<any>(setToken(response.token));
       router.push("/");
     } catch (error) {
       // setError(error.response.data.message);
@@ -44,7 +44,7 @@ const SignUp = () => {
               type="email"
               id="email"
               placeholder="     e-mail"
-              // value={email}
+              // value={FormData.email}
               className="border py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               required
             />

@@ -5,6 +5,7 @@ import { AppThunk } from "../store";
 import { getAllContacts, addContact, updateContact, deleteContact} from "../../pages/api/index";
 
 interface ContactsState {
+  items: any;
   isLoading: boolean;
   error: string | null;
   contacts: Contact[];
@@ -14,6 +15,7 @@ const initialState: ContactsState = {
   isLoading: false,
   error: null,
   contacts: [],
+  items: undefined
 };
 
 const contactsSlice = createSlice({
